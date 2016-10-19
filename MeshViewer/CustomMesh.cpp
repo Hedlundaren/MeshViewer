@@ -28,16 +28,17 @@ void CustomMesh::loadMesh(std::string name) {
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
-	out_vertices.clear();
+	
 	vertices.clear();
 	indices.clear();
 	normals.clear();
+	HE_vertices.clear();
 
-
-	vertices.push_back(glm::vec3());
 	
 	HE_vert m;
-	HE_vertices.push_back(m);
+	//HE_vertices.push_back(m);
+	vertices.push_back(glm::vec3());
+	normals.push_back(glm::vec3());
 	
 	float BIG = 999999999999.9f;
 	maxX = -BIG;
@@ -47,44 +48,50 @@ void CustomMesh::loadMesh(std::string name) {
 	minY = BIG;
 	minZ = BIG;
 
-	readFile(name + ".m", vertices, indices, normals);
+	readFile(name + ".m");
 
-	/*===================
-	Bunny Debug
-	verts: 40003
-	faces: 80000
-	=====================*/
-	std::cout << "vertices size: " << vertices.size() << std::endl <<
-		"normals size: " << normals.size() << std::endl <<
-		"indices size: " << indices.size() << std::endl <<
-		"ratio : " << (float) indices.size() / (float)vertices.size() << std::endl << std::endl;
+	// TODO: 
+	// Render coordinate axis (pivot)
+	// Render ground plane
+	// Bounding box
+	// Flat shading
+	// Smooth shading
+	// Ortographic & Perspective
+	// HALF EDGE STRUCTURE
+	// ...
+
+	for (int vertex_id = 0; vertex_id < HE_vertices.size(); vertex_id++) {
+		// Transfer vertices to vertexbuffer
+		vertices.push_back(glm::vec3(HE_vertices[vertex_id].x, HE_vertices[vertex_id].y, HE_vertices[vertex_id].z));
+		// Transfer normals to normalbuffer
+		normals.push_back(glm::vec3(HE_vertices[vertex_id].nx, HE_vertices[vertex_id].ny, HE_vertices[vertex_id].nz));
+	}
 
 	// Model vertices
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW); // Give our vertices to OpenGL.
-	glEnableVertexAttribArray(0); // 1rst attribute buffer : vertices	
+	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float) * 3, &vertices[0], GL_STATIC_DRAW); // Give our vertices to OpenGL.
+	glEnableVertexAttribArray(0); // 1rst attribute buffer : vertices
 	glVertexAttribPointer(
 		0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
 		3,                  // size
 		GL_FLOAT,           // type
 		GL_FALSE,           // normalized?
-		0,                  // stride
-		(void*)0            // array buffer offset
+		sizeof(float) * 3,  // stride
+		(void*)0			// array buffer offset
 	);
 
 	// Model normals
 	glGenBuffers(1, &normalbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
 	glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &normals[0], GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
 	glEnableVertexAttribArray(1); // 3rd attribute buffer : normals
 	glVertexAttribPointer(
 		1,                                // attribute
 		3,                                // size
 		GL_FLOAT,                         // type
 		GL_TRUE,                         // normalized?
-		0,                                // stride
+		sizeof(float) * 3,                // stride
 		(void*)0                          // array buffer offset
 	);
 
@@ -94,30 +101,16 @@ void CustomMesh::loadMesh(std::string name) {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
 
-	
-
-	
-
-
-	std::cout << vertices[0].y << std::endl;
-	std::cout << indices[0] << std::endl;
-	std::cout << normals[0].x << std::endl;
-
 }
 
-void CustomMesh::draw() {
+void CustomMesh::draw(GLFWwindow *window) {
 	// Draw model
-	glPointSize(25.0);
+	glPointSize(2.0);
 	glLineWidth(1.0);
 
 	//Draw Object
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
-
-	//vertices
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-	glEnableVertexAttribArray(0);
 
 	// Index buffer
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
@@ -126,20 +119,45 @@ void CustomMesh::draw() {
 	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
 	glNormalPointer(GL_FLOAT, sizeof(glm::vec3), (void*)0);
 
-	// Draw the triangles !
-	glDrawElements(
-		GL_TRIANGLES,      // mode
-		indices.size(),    // count
-		GL_UNSIGNED_INT,   // type
-		(void*)0           // element array buffer offset
-	);
-
+	if (glfwGetKey(window, GLFW_KEY_3)) point_render = true; line_render = false; triangle_render = false;
+	if (glfwGetKey(window, GLFW_KEY_4)) point_render = false; line_render = true; triangle_render = false;
+	if (glfwGetKey(window, GLFW_KEY_5)) point_render = false; line_render = false; triangle_render = true;
 	
+
+	if ( point_render) {
+		// Draw the triangles !
+		glDrawElements(
+			GL_POINTS,      // mode
+			indices.size(),    // count
+			GL_UNSIGNED_INT,   // type
+			(void*)0           // element array buffer offset
+		);
+	}
+	else if (line_render){
+		// Draw the triangles !
+
+		glDrawElements(
+			GL_LINES,      // mode
+			indices.size(),    // count
+			GL_UNSIGNED_INT,   // type
+			(void*)0           // element array buffer offset
+		);
+
+	}
+	else if(triangle_render){
+		// Draw the triangles !
+		glDrawElements(
+			GL_TRIANGLES,      // mode
+			indices.size(),    // count
+			GL_UNSIGNED_INT,   // type
+			(void*)0           // element array buffer offset
+		);
+	}
 }
 
 
 
-void CustomMesh::readFile(std::string file_name, std::vector<glm::vec3> &vertices, std::vector<unsigned> &indices, std::vector<glm::vec3> &normals) {
+void CustomMesh::readFile(std::string file_name) {
 	std::ifstream in_file;
 
 	in_file.open("models/" + file_name);
@@ -165,7 +183,7 @@ void CustomMesh::readFile(std::string file_name, std::vector<glm::vec3> &vertice
 
 				if (elements[0] == "Face") {
 	
-						// Convert string to integers
+					// Convert string to integers
 					int index_1 = atoi(elements[2].c_str());
 					int index_2 = atoi(elements[3].c_str());
 					int index_3 = atoi(elements[4].c_str());
@@ -175,22 +193,17 @@ void CustomMesh::readFile(std::string file_name, std::vector<glm::vec3> &vertice
 					indices.push_back(index_2);
 					indices.push_back(index_3);
 					
-					glm::vec3 e1;
-					glm::vec3 e2;
-
-					e1 = vertices[index_2] - vertices[index_1];
-					e2 = vertices[index_3] - vertices[index_1];
-
 					// Calculate normal
-					glm::vec3 normal = glm::normalize(glm::cross(e1, e2));
+					//glm::vec3 v1 = glm::vec3(HE_vertices[index_1].x, HE_vertices[index_1].y, HE_vertices[index_1].z);
+					//glm::vec3 v2 = glm::vec3(HE_vertices[index_2].x, HE_vertices[index_2].y, HE_vertices[index_2].z);
+					//glm::vec3 v3 = glm::vec3(HE_vertices[index_3].x, HE_vertices[index_3].y, HE_vertices[index_3].z);
+					//glm::vec3 e1 = v2 - v1;
+					//glm::vec3 e2 = v3 - v1;
+					//glm::vec3 normal = glm::normalize(glm::cross(e1, e2));
 
-					normals.push_back(normal);
-					normals.push_back(normal);
-					normals.push_back(normal);
-
-
-
-
+					//normals.push_back(normal);
+					//normals.push_back(normal);
+					//normals.push_back(normal);
 					
 
 				}
@@ -226,17 +239,19 @@ void CustomMesh::loadVertex(std::vector<std::string> &elements, std::vector<glm:
 	if (y > maxX) maxY = y;
 	if (z > maxX) maxZ = z;
 
-	if (elements[2] == "0.0" && elements[3] == "0.0" && elements[4] == "0.0") std::cout << "HEJEEJEJEJE " << elements[1] << std::endl;
-	vertices.push_back(glm::vec3(x, y, z));
-
 	// HE vertices
 	HE_vert v;
 	v.x = atof(elements[2].c_str());
 	v.y = atof(elements[3].c_str());
 	v.z = atof(elements[4].c_str());
+
+	glm::vec3 normal = glm::normalize(glm::vec3(v.x, v.y, v.z));
+
+	v.nx = normal.x;
+	v.ny = normal.y;
+	v.nz = normal.z;
+
 	HE_vertices.push_back(v);
-
-
 }
 
 void CustomMesh::calcCenter() {

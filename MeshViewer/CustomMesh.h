@@ -20,8 +20,10 @@ struct HE_face;
 
 struct HE_vert {
 	float x, y, z; // the vertex coordinates
-	HE_edge* edge; // one of the half-edges emanating from the vertex
+	float nx, ny, nz; // the vertex coordinates
+	//HE_edge* edge; // one of the half-edges emanating from the vertex
 };
+
 
 struct HE_edge {
 	HE_vert* vert; // vertex at the end of the half-edge
@@ -36,6 +38,7 @@ struct HE_face {
 };
 
 
+
 class CustomMesh
 {
 
@@ -44,16 +47,20 @@ public:
 	CustomMesh();
 	~CustomMesh();
 	void loadMesh(std::string name);
-	void draw();
+	void draw(GLFWwindow *window);
 
 	glm::vec3 getMinBoundingBox();
 	glm::vec3 getMaxBoundingBox();
 	glm::vec3 getCenter();
 	
-
+	
 private:
 	float minX, minY, minZ,
 		maxX, maxY, maxZ;
+
+	bool point_render = false;
+	bool line_render = false;
+	bool triangle_render = true;
 	
 	glm::vec3 center_point;
 	std::vector<glm::vec3> vertices;
@@ -64,11 +71,8 @@ private:
 	std::vector<HE_edge> HE_edged;
 	std::vector<HE_face> HE_faces;
 
-	std::vector<glm::vec3> out_vertices;
-	std::vector<glm::vec3> out_normals;
-
 	// Read m-files
-	void readFile(std::string file_name, std::vector<glm::vec3> &vertices, std::vector<unsigned> &indices, std::vector<glm::vec3> &normals);
+	void readFile(std::string file_name);
 	void loadVertex(std::vector<std::string> &elements, std::vector<glm::vec3> &vertices);
 	void calcCenter();
 	GLuint IBO;

@@ -10,14 +10,12 @@ GLversion: v4.3
 #define WIDTH 1580
 #define HEIGHT 1000
 
-
 int main() {
 
 	std::cout << "=====================\n";
 	std::cout << "==== Mesh Viewer ====\n";
 	std::cout << "=====================\n\n";
 
-	
 	WindowManager wm;
 	wm.createWindow(WIDTH, HEIGHT);
 
@@ -28,7 +26,7 @@ int main() {
 	trans.init(wm.window);
 
 	std::string model_name;
-	model_name = "gargoyle";
+	model_name = "bunny";
 	CustomMesh model;
 	model.loadMesh(model_name);
 
@@ -113,7 +111,7 @@ int main() {
 		glUniformMatrix4fv(P_Loc, 1, GL_FALSE, &P[0][0]);
 		glUniform3fv(lDir_Loc, 1, &lDir[0]);
 
-		model.draw();
+		model.draw(wm.window);
 
 		wm.setRenderSettings();
 		

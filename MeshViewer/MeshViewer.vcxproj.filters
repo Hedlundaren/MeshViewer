@@ -34,6 +34,27 @@
     <Filter Include="headers\meshes">
       <UniqueIdentifier>{9e0e7d06-2301-4f18-9374-6cd0815575d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Themes">
+      <UniqueIdentifier>{adbe610f-494c-44b1-9077-a72cb2798894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Themes\Dark">
+      <UniqueIdentifier>{85f86053-2d83-4d84-9d00-f31dd40fd42b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Themes\Dark\Views">
+      <UniqueIdentifier>{bbc8673a-708f-4681-90ca-fc54d7ce3c9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Themes\Dark\Styles">
+      <UniqueIdentifier>{782a7495-7e8c-4a15-b32b-25de33d85aa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Themes\Dark\Content">
+      <UniqueIdentifier>{28292270-5476-4dfa-811c-d8735dfe0fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Themes\Dark\Content\Images">
+      <UniqueIdentifier>{66e42629-d9f5-4e45-85f9-23ac58091847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Themes\Dark\Content\Images\Flags">
+      <UniqueIdentifier>{6c115be9-fe1e-434b-8c65-35e9e16ae9eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Rotator.cpp">
@@ -92,10 +113,174 @@
     <None Include="shader.frag">
       <Filter>shaders</Filter>
     </None>
+    <None Include="Themes\Dark\Views\Widget.Wrapper.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\Top.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\T3.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\T2.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\T1.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\Q4.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\Q3.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\Q2.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\Q1.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\Layout.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\DocumentNoSearch.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\Document.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Views\Content.cshtml">
+      <Filter>Themes\Dark\Views</Filter>
+    </None>
+    <None Include="Themes\Dark\Styles\site.css">
+      <Filter>Themes\Dark\Styles</Filter>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MeshViewer.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Themes\Dark\Theme.txt">
+      <Filter>Themes\Dark</Filter>
+    </Text>
+    <Text Include="Themes\Dark\Instructions.txt">
+      <Filter>Themes\Dark</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Themes\Dark\Theme.png">
+      <Filter>Themes\Dark</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Styles\C01.TM.png">
+      <Filter>Themes\Dark\Styles</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Styles\C01.TL.png">
+      <Filter>Themes\Dark\Styles</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Styles\C01.BR.png">
+      <Filter>Themes\Dark\Styles</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\topbanner.TR.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\topbanner.TM.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\topbanner.TL.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\topbanner.MR.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\topbanner.ML.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\topbanner.BR.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\topbanner.BM.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\topbanner.BL.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\submenu.arrow.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\search.bg.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\page.bg.lights.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\page.bg.dots.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\menuVitem.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\menuV.TR.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\menuV.TL.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\menu.bg.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\menu.arrow.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\logo.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\inputbtn.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\header.shadow.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\footerimage.demo.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\footer.R.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\footer.M.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\footer.L.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\footer.bg.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\Flags\pt-PT.gif">
+      <Filter>Themes\Dark\Content\Images\Flags</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\Flags\en-US.gif">
+      <Filter>Themes\Dark\Content\Images\Flags</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\DarkHeader.jpg">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\contentimage.demo.jpg">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\breadcrumb.sep.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\breadcrumb.home.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\breadcrumb.bg.png">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
+    <Image Include="Themes\Dark\Content\Images\banner.demo.jpg">
+      <Filter>Themes\Dark\Content\Images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

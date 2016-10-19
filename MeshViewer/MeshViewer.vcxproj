@@ -165,11 +165,69 @@
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="shader.frag" />
     <None Include="shader.vert" />
+    <None Include="Themes\Dark\Styles\site.css" />
+    <None Include="Themes\Dark\Views\Content.cshtml" />
+    <None Include="Themes\Dark\Views\Document.cshtml" />
+    <None Include="Themes\Dark\Views\DocumentNoSearch.cshtml" />
+    <None Include="Themes\Dark\Views\Layout.cshtml" />
+    <None Include="Themes\Dark\Views\Q1.cshtml" />
+    <None Include="Themes\Dark\Views\Q2.cshtml" />
+    <None Include="Themes\Dark\Views\Q3.cshtml" />
+    <None Include="Themes\Dark\Views\Q4.cshtml" />
+    <None Include="Themes\Dark\Views\T1.cshtml" />
+    <None Include="Themes\Dark\Views\T2.cshtml" />
+    <None Include="Themes\Dark\Views\T3.cshtml" />
+    <None Include="Themes\Dark\Views\Top.cshtml" />
+    <None Include="Themes\Dark\Views\Widget.Wrapper.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MeshViewer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Themes\Dark\Instructions.txt" />
+    <Text Include="Themes\Dark\Theme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Themes\Dark\Content\Images\banner.demo.jpg" />
+    <Image Include="Themes\Dark\Content\Images\breadcrumb.bg.png" />
+    <Image Include="Themes\Dark\Content\Images\breadcrumb.home.png" />
+    <Image Include="Themes\Dark\Content\Images\breadcrumb.sep.png" />
+    <Image Include="Themes\Dark\Content\Images\contentimage.demo.jpg" />
+    <Image Include="Themes\Dark\Content\Images\DarkHeader.jpg" />
+    <Image Include="Themes\Dark\Content\Images\Flags\en-US.gif" />
+    <Image Include="Themes\Dark\Content\Images\Flags\pt-PT.gif" />
+    <Image Include="Themes\Dark\Content\Images\footer.bg.png" />
+    <Image Include="Themes\Dark\Content\Images\footer.L.png" />
+    <Image Include="Themes\Dark\Content\Images\footer.M.png" />
+    <Image Include="Themes\Dark\Content\Images\footer.R.png" />
+    <Image Include="Themes\Dark\Content\Images\footerimage.demo.png" />
+    <Image Include="Themes\Dark\Content\Images\header.shadow.png" />
+    <Image Include="Themes\Dark\Content\Images\inputbtn.png" />
+    <Image Include="Themes\Dark\Content\Images\logo.png" />
+    <Image Include="Themes\Dark\Content\Images\menu.arrow.png" />
+    <Image Include="Themes\Dark\Content\Images\menu.bg.png" />
+    <Image Include="Themes\Dark\Content\Images\menuV.TL.png" />
+    <Image Include="Themes\Dark\Content\Images\menuV.TR.png" />
+    <Image Include="Themes\Dark\Content\Images\menuVitem.png" />
+    <Image Include="Themes\Dark\Content\Images\page.bg.dots.png" />
+    <Image Include="Themes\Dark\Content\Images\page.bg.lights.png" />
+    <Image Include="Themes\Dark\Content\Images\search.bg.png" />
+    <Image Include="Themes\Dark\Content\Images\submenu.arrow.png" />
+    <Image Include="Themes\Dark\Content\Images\topbanner.BL.png" />
+    <Image Include="Themes\Dark\Content\Images\topbanner.BM.png" />
+    <Image Include="Themes\Dark\Content\Images\topbanner.BR.png" />
+    <Image Include="Themes\Dark\Content\Images\topbanner.ML.png" />
+    <Image Include="Themes\Dark\Content\Images\topbanner.MR.png" />
+    <Image Include="Themes\Dark\Content\Images\topbanner.TL.png" />
+    <Image Include="Themes\Dark\Content\Images\topbanner.TM.png" />
+    <Image Include="Themes\Dark\Content\Images\topbanner.TR.png" />
+    <Image Include="Themes\Dark\Styles\C01.BR.png" />
+    <Image Include="Themes\Dark\Styles\C01.TL.png" />
+    <Image Include="Themes\Dark\Styles\C01.TM.png" />
+    <Image Include="Themes\Dark\Theme.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
