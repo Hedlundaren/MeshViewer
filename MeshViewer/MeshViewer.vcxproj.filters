@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{2e6e3a8f-783b-45a0-a352-3a0acc6139b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common">
+      <UniqueIdentifier>{97e69d26-c8b5-4e04-b885-faa764d7023a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rendering">
+      <UniqueIdentifier>{76dc3452-5d53-4aef-b593-143b60d26017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\meshes">
+      <UniqueIdentifier>{0a04b56f-180b-4b62-bf06-9db817fea14e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="headers\common">
+      <UniqueIdentifier>{5f84351e-e789-4f17-8132-dcae30427e6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\rendering">
+      <UniqueIdentifier>{0902700f-afc3-4c33-afda-3f89ba99f2e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers\meshes">
+      <UniqueIdentifier>{9e0e7d06-2301-4f18-9374-6cd0815575d5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Rotator.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="GLShader.cpp">
+      <Filter>src\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="CubeMesh.cpp">
+      <Filter>src\meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowManager.cpp">
+      <Filter>src\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomMesh.cpp">
+      <Filter>src\meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="EventListener.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Rotator.hpp">
+      <Filter>headers\common</Filter>
+    </ClInclude>
+    <ClInclude Include="GLShader.hpp">
+      <Filter>headers\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMesh.h">
+      <Filter>headers\meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="main_includes.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowManager.h">
+      <Filter>headers\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomMesh.h">
+      <Filter>headers\meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nanogui\include\nanogui\nanogui.h">
+      <Filter>headers\common</Filter>
+    </ClInclude>
+    <ClInclude Include="EventListener.h">
+      <Filter>headers\common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shader.frag">
+      <Filter>shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MeshViewer.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
