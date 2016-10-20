@@ -101,6 +101,10 @@ int main() {
 
 		glfwSetScrollCallback(wm.window, scroll);
 		P = glm::perspectiveFov(50.0f + zoom + trans.zoom *zoom_speed + rotator.zoom, static_cast<float>(WIDTH), static_cast<float>(HEIGHT), 0.1f, 100000.0f);
+		
+		float a = 0.01f;
+		float b = +zoom + trans.zoom *zoom_speed + rotator.zoom;
+		//P = glm::ortho(-10.0f*a + b, 10.0f*a + b, -10.0f*a + b, 10.0f*a + b);
 		MV = V * M;
 
 		//Calculate light direction

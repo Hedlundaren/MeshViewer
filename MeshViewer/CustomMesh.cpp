@@ -62,10 +62,14 @@ void CustomMesh::loadMesh(std::string name) {
 
 	for (int vertex_id = 0; vertex_id < HE_vertices.size(); vertex_id++) {
 		// Transfer vertices to vertexbuffer
-		vertices.push_back(glm::vec3(HE_vertices[vertex_id].x, HE_vertices[vertex_id].y, HE_vertices[vertex_id].z));
+		vertices.push_back(glm::vec3(HE_vertices[vertex_id]->x, HE_vertices[vertex_id]->y, HE_vertices[vertex_id]->z));
 		// Transfer normals to normalbuffer
-		normals.push_back(glm::vec3(HE_vertices[vertex_id].nx, HE_vertices[vertex_id].ny, HE_vertices[vertex_id].nz));
+		normals.push_back(glm::vec3(HE_vertices[vertex_id]->nx, HE_vertices[vertex_id]->ny, HE_vertices[vertex_id]->nz));
+
 	}
+
+	std::cout << "HE_faces.size() = " << HE_faces.size() << std::endl;
+	std::cout << "first vert = " << HE_faces[0]->edge->vert->x << std::endl;
 
 	// Model vertices
 	glGenBuffers(1, &vbo);
@@ -204,7 +208,57 @@ void CustomMesh::readFile(std::string file_name) {
 					//normals.push_back(normal);
 					//normals.push_back(normal);
 					//normals.push_back(normal);
-					
+
+
+
+					//struct HE_vert {
+					//	float x, y, z; // the vertex coordinates
+					//	float nx, ny, nz; // the vertex coordinates
+					//	HE_edge* edge; // one of the half-edges emanating from the vertex
+					//};
+					//struct HE_edge {
+					//	HE_vert* vert; // vertex at the end of the half-edge
+					//	HE_edge* pair; // oppositely oriented half-edge
+					//	HE_face* face; // the incident face
+					//	HE_edge* prev; // previous half-edge around the face
+					//	HE_edge* next; // next half-edge around the face
+					//};
+
+					// Poiters4lyf
+					HE_face *this_face = new HE_face;
+					HE_edge *e1 = new HE_edge;
+					HE_edge *e2 = new HE_edge;
+					HE_edge *e3 = new HE_edge;
+
+
+					// edge 1 - pair calc later
+					e1->vert = HE_vertices[index_2];
+					e1->pair = nullptr;
+					e1->face = this_face;
+					e1->prev = e3;
+					e1->next = e2;
+
+					// edge 2 - pair calc later
+					e2->vert = HE_vertices[index_3];
+					e2->pair = nullptr;
+					e2->face = this_face;
+					e2->prev = e1;
+					e2->next = e3;
+
+					// edge 3 - pair calc later
+					e3->vert = HE_vertices[index_1];
+					e3->pair = nullptr;
+					e3->face = this_face;
+					e3->prev = e2;
+					e3->next = e1;
+
+					this_face->edge = e1;
+
+					//HE_vertices[index_1]->edge = e1;
+					//HE_vertices[index_2]->edge = e2;
+					//HE_vertices[index_3]->edge = e3;
+
+					HE_faces.push_back(this_face);
 
 				}
 
@@ -240,18 +294,21 @@ void CustomMesh::loadVertex(std::vector<std::string> &elements, std::vector<glm:
 	if (z > maxX) maxZ = z;
 
 	// HE vertices
-	HE_vert v;
-	v.x = atof(elements[2].c_str());
-	v.y = atof(elements[3].c_str());
-	v.z = atof(elements[4].c_str());
+	HE_vert *v = new HE_vert;
+	v->x = atof(elements[2].c_str());
+	v->y = atof(elements[3].c_str());
+	v->z = atof(elements[4].c_str());
 
-	glm::vec3 normal = glm::normalize(glm::vec3(v.x, v.y, v.z));
+	glm::vec3 normal = glm::normalize(glm::vec3(v->x, v->y, v->z));
 
-	v.nx = normal.x;
-	v.ny = normal.y;
-	v.nz = normal.z;
+	v->nx = normal.x;
+	v->ny = normal.y;
+	v->nz = normal.z;
 
 	HE_vertices.push_back(v);
+
+
+
 }
 
 void CustomMesh::calcCenter() {

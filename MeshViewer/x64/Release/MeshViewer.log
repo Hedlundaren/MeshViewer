@@ -1,10 +1,21 @@
-﻿  Main.cpp
+﻿  CustomMesh.cpp
+CustomMesh.cpp(38): warning C4101: 'm': unreferenced local variable
+CustomMesh.cpp(138): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+CustomMesh.cpp(148): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+CustomMesh.cpp(158): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+CustomMesh.cpp(285): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+CustomMesh.cpp(286): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+CustomMesh.cpp(287): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+CustomMesh.cpp(298): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+CustomMesh.cpp(299): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+CustomMesh.cpp(300): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Main.cpp
 Main.cpp(73): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 Main.cpp(78): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
   Generating code
-  26 of 639 functions ( 4.1%) were compiled, the rest were copied from previous compilation.
+  26 of 681 functions ( 3.8%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
+    14 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   MeshViewer.vcxproj -> C:\Users\Simon\Documents\Visual Studio 2015\Projects\MeshViewer\x64\Release\MeshViewer.exe
   MeshViewer.vcxproj -> C:\Users\Simon\Documents\Visual Studio 2015\Projects\MeshViewer\x64\Release\MeshViewer.pdb (Full PDB)

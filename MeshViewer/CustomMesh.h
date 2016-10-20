@@ -21,9 +21,8 @@ struct HE_face;
 struct HE_vert {
 	float x, y, z; // the vertex coordinates
 	float nx, ny, nz; // the vertex coordinates
-	//HE_edge* edge; // one of the half-edges emanating from the vertex
+	HE_edge* edge; // one of the half-edges emanating from the vertex
 };
-
 
 struct HE_edge {
 	HE_vert* vert; // vertex at the end of the half-edge
@@ -67,9 +66,11 @@ private:
 	std::vector<unsigned int> indices;
 	std::vector<glm::vec3> normals;
 
-	std::vector<HE_vert> HE_vertices;
-	std::vector<HE_edge> HE_edged;
-	std::vector<HE_face> HE_faces;
+	std::vector<HE_vert*> HE_vertices;
+	std::vector<HE_edge*> HE_edged;
+	std::vector<HE_face*> HE_faces;
+
+
 
 	// Read m-files
 	void readFile(std::string file_name);
