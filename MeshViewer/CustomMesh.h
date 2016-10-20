@@ -66,9 +66,9 @@ private:
 	std::vector<unsigned int> indices;
 	std::vector<glm::vec3> normals;
 
-	std::vector<HE_vert*> HE_vertices;
-	std::vector<HE_edge*> HE_edged;
-	std::vector<HE_face*> HE_faces;
+	std::vector<HE_vert> HE_vertices;
+	std::vector<HE_edge> HE_edged;
+	std::vector<HE_face> HE_faces;
 
 
 
